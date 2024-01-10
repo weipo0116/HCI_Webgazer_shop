@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--
+This is an example HTML that shows how WebGazer can be used on a website.
+This file provides the additional features:
+  * An integrated, intuitive and sleek action bar with an informative "help" module accessible at all times
+  * Structured 9-point calibration system
+  * Accuracy measure of predictions based on calibration process
+  * Video feedback regarding face positioning
+  * Improved eye predictions visible to the user
+Instructions on use can be found in the README repository.
+-->
+<html>
+  <head>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8" />
+    <title>WebGazer Demo</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./css/style.css" /> -->
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <script src="./tensorflow.js"></script> -->
+    <script src="./webgazer.js"></script>
+  </head>
+  <body lang="en-US" link="#0000ff" dir="LTR">
+    <script>
+      // 在網頁載入時提示用戶輸入數字
+      const userInput = prompt("請輸入由空格分隔的四個數字，例如 '2, 3, 1, 4'");
+      let a, b, c, d;
+      // [a, b, c, d] = [1, 2, 3, 4];
+      // 判斷是否為有效的輸入
+      if (userInput) {
+        const digits = userInput.split(", ");
+
+        [a, b, c, d] = digits;
+        //handleInput(userInput);
+      } else {
+        alert("無效的輸入");
+      }
+
+      function startCalibration() {
+        // Open a new calibration page
+        window.open("calibration.html", "_blank");
+      }
+
+      function handleInput(input) {
+        const digits = input.split(" ");
+      }
+
+      if (a == 1) {
+        console.log(a);
+      } else if (a == 2) {
+        // 隐藏ALL CATEGORIES内容
+      }
+    </script>
+    <!-- <canvas
+      id="plotting_canvas"
+      width="500"
+      height="500"
+      style="cursor: crosshair"
+    ></canvas> -->
+
+    <script src="./node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="./js/main_shop.js"></script>
+    <script src="./js/calibration.js"></script>
+    <script src="./js/precision_calculation.js"></script>
+    <script src="./js/precision_store_points.js"></script>
+    <!-- <script src="./js/xy.js"></script> -->
+    <script>
+      let clothingContent = `
+        <div id="clothing-container">
+          <h6 href="#" class="text-sm text-black">CLOTHING</h6>
+          <ul class="vertical-list">
+            <li><a href="#" class="text-xs text-black">Bodysuits & Camis</a></li>
+            <li><a href="#" class="text-xs text-black">Tanks & Tees</a></li>
+            <li><a href="#" class="text-xs text-black">Blouses & Shirts</a></li>
+            <li><a href="#" class="text-xs text-black">Sweatshirts & Hoodies</a></li>
+            <li><a href="#" class="text-xs text-black">Sweaters</a></li>
+            <li><a href="#" class="text-xs text-black">Skirts</a></li>
+            <li><a href="#" class="text-xs text-black">Shorts</a></li>
+            <li><a href="#" class="text-xs text-black">Pants</a></li>
+            <li><a href="#" class="text-xs text-black">Jeans</a></li>
+            <li><a href="#" class="text-xs text-black">Dresses & Jumpsuits</a></li>
+            <li><a href="#" class="text-xs text-black">Vests</a></li>
+            <li><a href="#" class="text-xs text-black">Cardigans</a></li>
+          </ul>
+        </div>
+      `;
+    </script>
+    <script>
+      let sortContent = `
+        <div id="clothing-container">
+          <h6 class="text-sm text-black">SORT</h6>
+      <ul class="vertical-list">
+        <li>
+          <a href="#" class="text-xs text-black">Latest arrivals</a>
+        </li>
+        <li>
+          <a href="#" class="text-xs text-black">Trending</a>
+        </li>
+        <li>
+          <a href="#" class="text-xs text-black"
+            >Price: Low to high</a
+          >
+        </li>
+        <li>
+          <a href="#" class="text-xs text-black"
+            >Price: High to low</a
+          >
+        </li>
+      </ul>
+        </div>
+        `;
+    </script>
+    <script>
+      let colorsContent = `
+
+<h6 class="text-sm text-black">COLORS</h6>
+<ul class="vertical-list">
+<li><a href="#" class="text-xs text-black">Black</a></li>
+<li><a href="#" class="text-xs text-black">Blue</a></li>
+<li><a href="#" class="text-xs text-black">Brown</a></li>
+<li><a href="#" class="text-xs text-black">Burgundy</a></li>
+<li><a href="#" class="text-xs text-black">Gray</a></li>
+<li><a href="#" class="text-xs text-black">Green</a></li>
+<li><a href="#" class="text-xs text-black">Navy</a></li>
+<li><a href="#" class="text-xs text-black">Orange</a></li>
+<li><a href="#" class="text-xs text-black">Pink</a></li>
+<li><a href="#" class="text-xs text-black">Purple</a></li>
+<li><a href="#" class="text-xs text-black">Red</a></li>
+<li><a href="#" class="text-xs text-black">Tan</a></li>
+<li><a href="#" class="text-xs text-black">White</a></li>
+<li><a href="#" class="text-xs text-black">Yellow</a></li>
+</ul>
+</aside>
+`;
+    </script>
+
+    <!-- <button onclick="startCalibration()">开始校准</button> -->
+
+    <div className="container px-16 py-4 bg-white">
+      <head>
+        <title>HCI</title>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body class="font-sans">
+        <div class="center-container">
+          <header>
+            <div id="clothing-container" class="flex">
+              <ul class="flex space-x-4">
+                <li>
+                  <a class="text-sm text-black">MENSWEAR</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">WOMENSWEAR</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">EVERYTHING ELSE</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">SEARCH</a>
+                </li>
+              </ul>
+              <h2 href="#" class="text-3xl text-black">HCI</h2>
+              <ul class="flex space-x-4">
+                <li></li>
+                <li>
+                  <a href="#" class="text-sm text-black">ENGLISH</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">LOGIN</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">WISHLIST</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm text-black">SHOPPING BAG (0)</a>
+                </li>
+              </ul>
+            </div>
+          </header>
+
+          <main class="flex">
+            <div class="flex-col my-8">
+              <script>
+                let categoriesContent = `
+                  <div id="categories-container">
+                    <h6 href="#" class="text-sm text-black">ALL CATEGORIES</h6>
+                    <ul class="vertical-list">
+                      <li id="product_img"><a href="#" class="text-xs text-black"> ACTIVITY </a></li>
+                      <li id="product_img"><a href="#" class="text-xs text-black">HOME </a></li>
+                      <li id="product_img><a href="#" class="text-xs text-black"> KIDS </a></li>
+                      <li id="product_img><a href="#" class="text-xs text-black"> PETS </a></li>
+                      <li id="product_img><a href="#" class="text-xs text-black"> SELF-CARE </a></li>
+                      <li id="product_img><a href="#" class="text-xs text-black"> TECHNOLOGY </a></li>
+                    </ul>
+                  </div>
+                `;
+              </script>
+
+              <script>
+                //console.log(a);
+                // 在此处使用 if 语句判断
+                if (a == 1) {
+                  console.log(a);
+                  document.write(categoriesContent);
+                } else if (a == 2) {
+                  document.write(clothingContent);
+                } else if (a == 3) {
+                  document.write(sortContent);
+                } else {
+                  document.write(colorsContent);
+                }
+              </script>
+
+              <aside style="margin-top: 20px">
+                <script>
+                  if (b == 1) {
+                    console.log(b);
+                    document.write(categoriesContent);
+                  } else if (b == 2) {
+                    document.write(clothingContent);
+                  } else if (b == 3) {
+                    document.write(sortContent);
+                  } else {
+                    document.write(colorsContent);
+                  }
+
+                  // document.write(clothingContent);
+                </script>
+              </aside>
+            </div>
+
+            <section class="my-8 mr-8 ml-8 items-center">
+              <ul
+                class="flex justify-center items-start grid grid-cols-4 gap-4"
+              >
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Printed Shirt</p>
+                  <p class="text-xs text-black">$220</p>
+                </li>
+                <!-- Repeat this block for each product item -->
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
+                  <p class="text-xs text-black">$920</p>
+                </li>
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">
+                    Navy Pebble Grain 4-Bar Briefcase
+                  </p>
+                  <p class="text-xs text-black">$2010</p>
+                </li>
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    alt="Product 3"
+                  />
+                  <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
+                  <p class="text-xs text-black">$170</p>
+                </li>
+              </ul>
+              <ul
+                class="flex justify-center items-start grid grid-cols-4 gap-4"
+              >
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    alt="Product 3"
+                  />
+                  <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
+                  <p class="text-xs text-black">$170</p>
+                </li>
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Printed Shirt</p>
+                  <p class="text-xs text-black">$220</p>
+                </li>
+                <!-- Repeat this block for each product item -->
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
+                  <p class="text-xs text-black">$920</p>
+                </li>
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">
+                    Navy Pebble Grain 4-Bar Briefcase
+                  </p>
+                  <p class="text-xs text-black">$2010</p>
+                </li>
+              </ul>
+              <ul
+                class="flex justify-center items-start grid grid-cols-4 gap-4"
+              >
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">
+                    Navy Pebble Grain 4-Bar Briefcase
+                  </p>
+                  <p class="text-xs text-black">$2010</p>
+                </li>
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    alt="Product 3"
+                  />
+                  <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
+                  <p class="text-xs text-black">$170</p>
+                </li>
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Printed Shirt</p>
+                  <p class="text-xs text-black">$220</p>
+                </li>
+                <!-- Repeat this block for each product item -->
+
+                <li class="flex-1 text-left mx-4">
+                  <img
+                    class="img_frame"
+                    id="product_img"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    alt="Product 1"
+                  />
+                  <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
+                  <p class="text-xs text-black">$920</p>
+                </li>
+              </ul>
+            </section>
+            <div class="flex-col my-8" style="align-items: flex-start">
+              <script>
+                if (c == 1) {
+                  console.log(c);
+                  document.write(categoriesContent);
+                } else if (c == 2) {
+                  document.write(clothingContent);
+                } else if (c == 3) {
+                  document.write(sortContent);
+                } else {
+                  document.write(colorsContent);
+                }
+                // document.write(sortContent);
+              </script>
+              <div style="margin-top: 20px"></div>
+              <script>
+                if (d == 1) {
+                  console.log(d);
+                  document.write(categoriesContent);
+                } else if (d == 2) {
+                  document.write(clothingContent);
+                } else if (d == 3) {
+                  document.write(sortContent);
+                } else {
+                  document.write(colorsContent);
+                }
+
+                // document.write(colorsContent);
+              </script>
+            </div>
+          </main>
+        </div>
+      </body>
+    </div>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="./js/resize_canvas.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+      function startCalibration() {
+        // 打开新的校准页面
+        window.open("calibration.html", "_blank");
+      }
+    </script> -->
+  </body>
+</html>
