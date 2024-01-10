@@ -31,3 +31,6 @@ You can customize the WebGazer setup by modifying the configuration files and sc
 - xy.js: Records eye movement data.
 - index_page.html: Main Shopping page.
 - change.html: Revised Shopping page.
+
+## Heatmap Analysis 
+![heatmap1_data-15](https://github.com/weipo0116/Webgazer_shop/assets/80244742/dc422ec4-ab0b-4f80-8333-79e8964de21d)
