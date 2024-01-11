@@ -25,20 +25,58 @@ Instructions on use can be found in the README repository.
   </head>
   <body lang="en-US" link="#0000ff" dir="LTR">
     <script>
-      // 在網頁載入時提示用戶輸入數字
-      const userInput = prompt("請輸入由空格分隔的四個數字，例如 '2, 3, 1, 4'");
-      let a, b, c, d;
-      // [a, b, c, d] = [1, 2, 3, 4];
-      // 判斷是否為有效的輸入
-      if (userInput) {
-        const digits = userInput.split(", ");
+      // 从sessionStorage中获取之前保存的数据
+      var storedData = sessionStorage.getItem("areaStatistics");
 
-        [a, b, c, d] = digits;
-        //handleInput(userInput);
+      if (storedData) {
+        // 如果存在数据，将其解析为对象
+        var parsedData = JSON.parse(storedData);
+        // 打印或使用解析后的数据
+        console.log(
+          "Area 1 Count:",
+          parsedData.area_1,
+          parsedData.result_order[0]
+        );
+        console.log(
+          "Area 2 Count:",
+          parsedData.area_2,
+          parsedData.result_order[1]
+        );
+        console.log(
+          "Area 3 Count:",
+          parsedData.area_3,
+          parsedData.result_order[2]
+        );
+        console.log(
+          "Area 4 Count:",
+          parsedData.area_4,
+          parsedData.result_order[3]
+        );
+        console.log("区域顺序:", parsedData.result_order);
       } else {
-        alert("無效的輸入");
+        console.log("没有存储的统计数据。");
       }
+      // const userInput = prompt("請輸入由空格分隔的四個數字，例如 '2 2 4 3'");
+      // 现在变量 a, b, c, d 包含了相应的值
 
+      // 在網頁載入時提示用戶輸入數字
+
+      // let a, b, c, d;
+      // [a, b, c, d] = [1, 2, 3, 4];
+      // // 判斷是否為有效的輸入
+      // if (userInput) {
+      //   const digits = userInput.split(" ");
+
+      //   [a, b, c, d] = digits;
+      //   //handleInput(userInput);
+      // } else {
+      //   alert("無效的輸入");
+      // }
+      // if (a == 1) {
+      //   console.log(a);
+      // } else if (a == 2) {
+      //   // 隐藏ALL CATEGORIES内容
+      // }
       function startCalibration() {
         // Open a new calibration page
         window.open("calibration.html", "_blank");
@@ -46,12 +84,6 @@ Instructions on use can be found in the README repository.
 
       function handleInput(input) {
         const digits = input.split(" ");
-      }
-
-      if (a == 1) {
-        console.log(a);
-      } else if (a == 2) {
-        // 隐藏ALL CATEGORIES内容
       }
     </script>
     <!-- <canvas
@@ -176,7 +208,7 @@ Instructions on use can be found in the README repository.
                   <a href="#" class="text-sm text-black">WISHLIST</a>
                 </li>
                 <li>
-                  <a href="#" class="text-sm text-black">SHOPPING BAG (0)</a>
+                  <parsedData.result_order[0]href="#" class="text-sm text-black">SHOPPING BAG (0)</a>
                 </li>
               </ul>
             </div>
@@ -203,12 +235,18 @@ Instructions on use can be found in the README repository.
               <script>
                 //console.log(a);
                 // 在此处使用 if 语句判断
-                if (a == 1) {
-                  console.log(a);
+                var storedData = sessionStorage.getItem("areaStatistics");
+
+      if (storedData) {
+        // 如果存在数据，将其解析为对象
+        var parsedData = JSON.parse(storedData);
+      }
+                if (parsedData.result_order[0]== 1) {
+                  ///console.log(a);
                   document.write(categoriesContent);
-                } else if (a == 2) {
+                } else if (parsedData.result_order[0]== 2) {
                   document.write(clothingContent);
-                } else if (a == 3) {
+                } else if (parsedData.result_order[0]== 3) {
                   document.write(sortContent);
                 } else {
                   document.write(colorsContent);
@@ -217,12 +255,18 @@ Instructions on use can be found in the README repository.
 
               <aside style="margin-top: 20px">
                 <script>
-                  if (b == 1) {
-                    console.log(b);
+                  var storedData = sessionStorage.getItem("areaStatistics");
+
+if (storedData) {
+  // 如果存在数据，将其解析为对象
+  var parsedData = JSON.parse(storedData);
+}
+                  if (parsedData.result_order[1]== 1) {
+                    //console.log(b);
                     document.write(categoriesContent);
-                  } else if (b == 2) {
+                  } else if (parsedData.result_order[1]== 2) {
                     document.write(clothingContent);
-                  } else if (b == 3) {
+                  } else if (parsedData.result_order[1]== 3) {
                     document.write(sortContent);
                   } else {
                     document.write(colorsContent);
@@ -241,7 +285,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Printed Shirt</p>
@@ -253,7 +297,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
@@ -264,7 +308,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">
@@ -277,7 +321,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
                     alt="Product 3"
                   />
                   <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
@@ -291,7 +335,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
                     alt="Product 3"
                   />
                   <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
@@ -301,7 +345,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Printed Shirt</p>
@@ -313,7 +357,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
@@ -324,7 +368,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">
@@ -340,7 +384,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M172005_1/thom-browne-gray-shearling-wool-sheep-tote.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">
@@ -353,7 +397,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M167000_1/thom-browne-navy-pebble-grain-4-bar-briefcase.jpg"
                     alt="Product 3"
                   />
                   <p class="text-xs text-black">Purple Lampadina Table Lamp</p>
@@ -363,7 +407,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/232314M171010_1/vivienne-westwood-black-and-white-graphic-pouch.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Printed Shirt</p>
@@ -375,7 +419,7 @@ Instructions on use can be found in the README repository.
                   <img
                     class="img_frame"
                     id="product_img"
-                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_240,w_240/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
+                    src="https://img.ssensemedia.com/images/b_white,c_lpad,g_south,h_180,w_180/c_scale,h_280/f_auto,dpr_2.0/241381M171000_1/thom-browne-navy-snap-pocket-camera-bag.jpg"
                     alt="Product 1"
                   />
                   <p class="text-xs text-black">Navy Snap Pocket Camera Bag</p>
@@ -385,12 +429,18 @@ Instructions on use can be found in the README repository.
             </section>
             <div class="flex-col my-8" style="align-items: flex-start">
               <script>
-                if (c == 1) {
-                  console.log(c);
+                var storedData = sessionStorage.getItem("areaStatistics");
+
+if (storedData) {
+  // 如果存在数据，将其解析为对象
+  var parsedData = JSON.parse(storedData);
+}
+                if (parsedData.result_order[2]== 1) {
+                  //console.log(c);
                   document.write(categoriesContent);
-                } else if (c == 2) {
+                } else if (parsedData.result_order[2]== 2) {
                   document.write(clothingContent);
-                } else if (c == 3) {
+                } else if (parsedData.result_order[2]== 3) {
                   document.write(sortContent);
                 } else {
                   document.write(colorsContent);
@@ -399,12 +449,18 @@ Instructions on use can be found in the README repository.
               </script>
               <div style="margin-top: 20px"></div>
               <script>
-                if (d == 1) {
-                  console.log(d);
+                var storedData = sessionStorage.getItem("areaStatistics");
+
+if (storedData) {
+  // 如果存在数据，将其解析为对象
+  var parsedData = JSON.parse(storedData);
+}
+                if (parsedData.result_order[3]== 1) {
+                  //console.log(d);
                   document.write(categoriesContent);
-                } else if (d == 2) {
+                } else if (parsedData.result_order[3]== 2) {
                   document.write(clothingContent);
-                } else if (d == 3) {
+                } else if (parsedData.result_order[3]== 3) {
                   document.write(sortContent);
                 } else {
                   document.write(colorsContent);
